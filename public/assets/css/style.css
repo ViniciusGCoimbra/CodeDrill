@@ -1,0 +1,246 @@
+/* Variáveis globais de cor */
+:root {
+  --azulclaro: #2858d0;
+  --azulfundo: #1e4abe;
+  --azulelemento: #001e86;
+  --azulbotao: #0a2d99;
+}
+
+/* Fontes Montserrat */
+@font-face {
+  font-family: "Montserrat";
+  src: url("../fonts/Montserrat-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Montserrat";
+  src: url("../fonts/Montserrat-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+}
+
+/* Fontes Roboto */
+@font-face {
+  font-family: "Roboto";
+  src: url("../fonts/Roboto-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Roboto";
+  src: url("../fonts/Roboto-Medium.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+}
+
+/* Reset básico */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Estilo base do corpo */
+body {
+  background-color: var(--azulfundo);
+  min-height: 100vh;
+  position: relative;
+  color: #fff;
+  font-family: "Roboto", sans-serif;
+}
+
+/* Títulos principais */
+h1 {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 500;
+  font-size: 5rem;
+}
+
+/* Parágrafos */
+p {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 400;
+  font-size: 1rem;
+}
+
+/* Links */
+a {
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+}
+
+/* Botão principal */
+.btn-main {
+  display: flex;
+  justify-content: flex-start;
+  border-radius: 15px;
+  background-color: var(--azulbotao);
+  border: none;
+  padding: 1rem 2rem;
+  font-size: 1rem;
+  font-weight: 500;
+  font-family: "Roboto", sans-serif;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+/* Título e subtítulo principais com responsividade */
+.main-title {
+  font-size: clamp(2rem, 6vw, 4rem);
+  line-height: 1.05;
+}
+
+.main-subtitle {
+  font-size: clamp(1rem, 3.2vw, 1.25rem);
+  line-height: 1.3;
+}
+
+/* Ajustes para telas pequenas */
+@media (max-width: 480px) {
+  .btn-main {
+    padding: 0.75rem 1.25rem;
+    font-size: 0.95rem;
+  }
+
+  .main-content {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+  }
+}
+
+/* Efeito hover no botão principal */
+.btn-main:hover {
+  background-color: rgb(10, 58, 202);
+  transform: scale(1.05);
+}
+
+/* Estilo da barra de navegação */
+nav {
+  background-color: var(--azulfundo);
+}
+
+/* Itens do menu */
+li.nav-item {
+  margin: 2px 0;
+  border: none;
+  padding: 0.1rem 0.2rem;
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  display: flex;
+}
+
+/* Links do menu */
+.navbar-nav .nav-link {
+  padding-left: 0.8rem !important;
+  padding-right: 0.8rem !important;
+  transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+}
+
+/* Efeito hover nos links do menu */
+.navbar-nav .nav-link:hover {
+  background: var(--azulbotao);
+  border-radius: 12px;
+  transform: scale(1.08);
+  box-shadow: none;
+}
+
+/* Elemento decorativo circular à esquerda */
+.circle {
+  width: 450px;
+  height: 450px;
+  border: 50px solid var(--azulelemento);
+  border-radius: 50%;
+  background: transparent;
+  position: fixed;
+  top: -120px;
+  left: -120px;
+  z-index: -1;
+}
+
+/* Elemento decorativo circular à direita */
+.bg-circle {
+  width: 800px;
+  height: 800px;
+  position: fixed;
+  top: 0px;
+  right: -210px;
+  background-color: var(--azulelemento);
+  border-radius: 50%;
+  z-index: -1;
+}
+
+/* Oculta círculos decorativos em telas menores */
+@media (max-width: 768px) {
+  .circle,
+  .bg-circle {
+    display: none;
+  }
+}
+
+/* Imagem decorativa fixa no rodapé */
+.img-fluid {
+  position: fixed;
+  bottom: 0px;
+  right: 0px;
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* Destaque visual para cartões */
+.card-highlight {
+  background-color: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 0.625rem;
+}
+
+/* Texto branco com opacidade */
+.text-white-85 {
+  color: rgba(255, 255, 255, 0.85) !important;
+}
+
+/* Estilo para breadcrumb */
+.breadcrumb {
+  --bs-breadcrumb-divider: '>';
+  background: transparent;
+  padding: 0;
+  margin-bottom: 1rem;
+}
+
+/* Links dentro do breadcrumb */
+.breadcrumb a,
+.breadcrumb .breadcrumb-item a {
+  text-decoration: none;
+}
+
+/* Item ativo no breadcrumb */
+.breadcrumb .active {
+  color: #ffffff;
+  font-weight: 600;
+}
+
+/* Separador entre itens do breadcrumb */
+.breadcrumb .breadcrumb-item + .breadcrumb-item::before {
+  color: rgba(0, 0, 0, 0.6);
+}
+
+/* Botão de política de privacidade */
+.btn-privacy {
+  border-radius: 25px;
+  margin: 1rem auto;
+  background-color: var(--azulbotao);
+  border: none;
+  padding: 1rem;
+  font-weight: 500;
+  transition: background-color 0.3s, transform 0.3s;
+  display: flex;
+  justify-content: center;
+  width: fit-content;
+}
+
+/* Efeito hover no botão de privacidade */
+.btn-privacy:hover {
+  background-color: rgb(10, 58, 202);
+  transform: scale(1.02);
+}

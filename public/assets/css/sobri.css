@@ -1,0 +1,94 @@
+/* Variáveis globais de cor */
+:root {
+  --azulclaro: #2858d0;       /* Azul claro para destaques */
+  --azulfundo: #1e4abe;       /* Fundo de elementos */
+  --azulelemento: #001e86;    /* Elementos escuros */
+  --azulbotao: #0a2d99;       /* Botões principais */
+}
+
+/* Fontes Montserrat */
+@font-face {
+  font-family: "Montserrat";
+  src: url("../fonts/Montserrat-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Montserrat";
+  src: url("../fonts/Montserrat-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+}
+
+/* Fontes Roboto */
+@font-face {
+  font-family: "Roboto";
+  src: url("../fonts/Roboto-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Roboto";
+  src: url("../fonts/Roboto-Medium.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+}
+
+/* Caixa principal de conteúdo */
+.box {
+  background: var(--azulelemento);
+  color: #fff;
+  border-radius: 1rem;
+  padding: 2.5rem;
+  box-shadow: 0 14px 40px rgba(2, 6, 23, 0.55);
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* Título principal */
+.titulo h1 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 2.2rem;
+  font-weight: 700;
+  margin-bottom: 0.6rem;
+}
+
+/* Frase de destaque */
+.frase h2 {
+  font-size: 1.2rem;
+  font-style: italic;
+  color: rgba(255, 255, 255, 0.9);
+  line-height: 1.5;
+}
+
+/* Imagens decorativas com proporção fixa */
+.imglogo,
+.imgnome,
+.imgsignificado {
+  width: 100%;
+  max-width: 500px;
+  aspect-ratio: 16 / 9;
+  border-radius: 0.75rem;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  box-shadow: 0 12px 30px rgba(2, 6, 23, 0.6);
+  margin: 0 auto 1.5rem auto;
+}
+
+/* Título das seções explicativas */
+.titulosbody h1 {
+  font-size: 1.8rem;
+  margin-bottom: 15px;
+  color: #fff;
+}
+
+/* Texto explicativo das seções */
+.subtituloesquerda,
+.subtitulodireita {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #fff;
+}

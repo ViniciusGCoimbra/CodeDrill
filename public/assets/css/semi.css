@@ -1,0 +1,33 @@
+/* Elemento semicircular decorativo fixado à direita da tela */
+.semicirculo {
+    background-color: #001e86;           /* Cor de fundo azul escuro */
+    position: fixed;                     /* Fixa o elemento na tela */
+    top: 0;                              /* Alinha ao topo */
+    right: 0;                            /* Alinha à direita */
+    width: 40vw;                         /* Largura relativa à viewport */
+    height: 100%;                        /* Altura total */
+    min-height: 100vh;                   /* Garante altura mínima da viewport */
+    border-radius: 100% 0 0 100%;        /* Cria forma semicircular */
+    z-index: -1;                         /* Fica atrás dos demais elementos */
+}
+
+/* Ajuste de largura para telas menores que 1200px */
+@media (max-width: 1200px) {
+    .semicirculo {
+        width: 55vw;
+    }
+}
+
+/* Ajuste de largura para telas menores que 1024px */
+@media (max-width: 1024px) {
+    .semicirculo {
+        width: 60vw;
+    }
+}
+
+/* Oculta o elemento em telas menores que 768px */
+@media (max-width: 768px) {
+    .semicirculo {
+        display: none;
+    }
+}

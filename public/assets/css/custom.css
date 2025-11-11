@@ -1,0 +1,472 @@
+/* Variáveis globais */
+:root {
+    --azulclaro: #2858d0;
+    --azulfundo: #1e4abe;
+    --azulelemento: #001E86;
+    --azulbotao: #0A2D99;
+    --sidebar-width: 250px;
+    --sidebar-min-width: 70px;
+}
+
+/* Fontes personalizadas */
+@font-face {
+    font-family: 'Montserrat';
+    src: url('../fonts/Montserrat-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Montserrat';
+    src: url('../fonts/Montserrat-Bold.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Roboto';
+    src: url('../fonts/Roboto-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Roboto';
+    src: url('../fonts/Roboto-Medium.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+}
+
+/* Reset básico */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Montserrat', sans-serif;
+}
+
+/* Ícones Bootstrap */
+.bi {
+    margin-top: 16px;
+}
+
+/* Corrige alinhamento do ícone dentro do botão de toggle do sidebar */
+#sidebarToggle {
+    display: inline-flex; /* garante flexbox */
+    align-items: center;
+    justify-content: center;
+}
+
+#sidebarToggle .bi {
+    margin-top: 0 !important; /* neutraliza margem global */
+    margin-bottom: 0 !important;
+    vertical-align: middle;
+    display: inline-block;
+    font-size: 1.05rem; /* ajuste fino do tamanho do ícone */
+}
+
+/* Cartões personalizados */
+.card-custom {
+    background-color: var(--azulfundo) !important;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Sidebar */
+.sidebar,
+.vh-100.position-fixed[style] {
+    background-color: var(--azulelemento) !important;
+    transition: width 240ms cubic-bezier(.2, .8, .2, 1);
+    z-index: 1040;
+}
+
+.sidebar-brand img {
+    width: 40px;
+    height: 40px;
+    object-fit: cover;
+}
+
+/* AJUSTE: Remove o padding padrão da lista `ul` que deslocava os ícones para a direita */
+.sidebar .nav {
+    padding-left: 0;
+}
+
+.sidebar .nav-link {
+    font-family: 'Roboto', sans-serif;
+    box-sizing: border-box; 
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+}
+
+.sidebar .nav-link .bi { margin-top: 0; }
+
+/* Hover e item ativo: mesmo visual */
+.sidebar .nav-link.active,
+.sidebar .nav-link[aria-current="page"],
+.sidebar-link:hover,
+.sidebar .nav-link:hover {
+    background-color: var(--azulclaro);
+    border-radius: 8px;
+    color: #fff !important;
+}
+
+/* Sidebar minimizada */
+.sidebar.sidebar-minimized {
+    width: var(--sidebar-min-width) !important;
+}
+
+.sidebar.sidebar-minimized .brand-text,
+.sidebar.sidebar-minimized .link-text,
+.sidebar.sidebar-minimized .profile-name {
+    display: none;
+}
+
+.sidebar.sidebar-minimized .sidebar-top {
+    gap: 0.5rem;
+}
+
+.sidebar.sidebar-minimized .nav-link,
+.sidebar.sidebar-minimized .sidebar-link {
+    justify-content: center;
+    position: relative;
+    overflow: hidden !important;
+    width: var(--sidebar-min-width) !important;
+    max-width: var(--sidebar-min-width) !important;
+    margin-inline: 0;
+    padding-left: 0 !important; 
+    padding-right: 0 !important;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+}
+
+.sidebar.sidebar-minimized .nav-link:hover,
+.sidebar.sidebar-minimized .sidebar-link:hover {
+    background-color: transparent !important;
+    border-radius: 8px;
+    color: #fff !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: var(--sidebar-min-width) !important;
+    max-width: var(--sidebar-min-width) !important;
+    height: 40px;
+    margin-left: 0;
+    overflow: hidden !important;
+    box-sizing: border-box;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    box-shadow: inset 0 0 0 9999px rgba(40, 88, 208, 0.95);
+}
+
+.sidebar.sidebar-minimized .nav-link .bi,
+.sidebar.sidebar-minimized .sidebar-link .bi {
+    margin: 0 auto !important;
+    display: block;
+    text-align: center;
+}
+
+/* Ajuste da dropdown-toggle para centralizar seta quando minimizado */
+.sidebar .dropdown-toggle {
+    display: flex;
+    align-items: center;
+}
+
+.sidebar.sidebar-minimized .dropdown-toggle {
+    justify-content: center;
+    width: var(--sidebar-min-width) !important;
+}
+
+.sidebar.sidebar-minimized .dropdown-toggle::after {
+    margin-left: 0;
+    position: relative;
+    left: 0;
+    transform: scale(0.9);
+}
+
+
+.sidebar.sidebar-minimized .profile-img {
+    margin: 0 auto;
+}
+
+/* Ajuste de margem lateral */
+.ms-250,
+main.ms-250 {
+    margin-left: calc(var(--sidebar-width) + 10px) !important;
+    transition: margin-left 240ms cubic-bezier(.2, .8, .2, 1);
+}
+
+body.sidebar-minimized .ms-250,
+body.sidebar-minimized main.ms-250,
+.sidebar.sidebar-minimized + .ms-250,
+.sidebar.sidebar-minimized ~ .ms-250,
+.sidebar.sidebar-minimized + main.ms-250,
+.sidebar.sidebar-minimized ~ main.ms-250 {
+    margin-left: calc(var(--sidebar-min-width) + 20px) !important;
+}
+
+.sidebar + .container,
+.sidebar ~ .container,
+.sidebar + main,
+.sidebar ~ main,
+.sidebar + .page-content,
+.sidebar ~ .page-content {
+    margin-left: calc(var(--sidebar-width) + 10px) !important;
+    transition: margin-left 240ms cubic-bezier(.2, .8, .2, 1);
+}
+
+body.sidebar-minimized .sidebar + .container,
+body.sidebar-minimized .sidebar ~ .container,
+body.sidebar-minimized .sidebar + main,
+body.sidebar-minimized .sidebar ~ main,
+body.sidebar-minimized .sidebar + .page-content,
+body.sidebar-minimized .sidebar ~ .page-content {
+    margin-left: calc(var(--sidebar-min-width) + 20px) !important;
+}
+
+/* Botão de toggle */
+#sidebarToggle {
+    border-radius: 10px;
+    padding: 0.25rem 0.45rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0.45rem;
+    background-color: var(--azulbotao);
+    width: 36px;
+    height: 36px;
+    line-height: 1;
+    min-width: 36px;
+    box-shadow: none;
+    border: 1px solid rgba(255,255,255,0.12);
+}
+
+
+#sidebarToggle:hover {
+    transform: translateX(-2px);
+}
+
+#sidebarToggle:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(40,88,208,0.18);
+}
+
+/* Dropdown do perfil */
+.dropdown-toggle::after {
+    margin-left: 0.5rem;
+}
+
+.sidebar.sidebar-minimized .dropdown-toggle::after {
+    display: inline-block;
+    opacity: 0.95;
+    margin-left: 0.35rem;
+    transform: scale(0.9);
+}
+
+.sidebar .dropdown-menu {
+    background-color: var(--azulclaro) !important;
+    border: none;
+}
+
+
+.sidebar .dropdown-menu .dropdown-item {
+    color: #fff;
+}
+
+
+.sidebar .dropdown-menu .dropdown-item:hover {
+    background-color: rgba(255,255,255,0.06) !important; 
+    color: #fff;
+}
+
+.sidebar .dropdown-menu { 
+    box-shadow: 0 6px 18px rgba(0,0,0,0.28)
+    ; border-radius: 8px; 
+}
+
+/* Cartão de boas-vindas */
+.welcome-card {
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.03),rgba(255, 255, 255, 0.02));
+    border-radius: 12px;
+}
+
+.welcome-title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.5rem;
+    color: #fff;
+    margin-bottom: 0.5rem;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .ms-250 {
+        margin-left: calc(var(--sidebar-min-width) + 20px) !important;
+        padding-top: 1rem;
+    }
+
+    .vh-100.position-fixed[style],
+    .sidebar {
+        position: fixed;
+        width: var(--sidebar-width);
+        height: 100vh;
+        overflow: visible;
+        transition: width 200ms ease;
+    }
+
+    body.sidebar-minimized .vh-100.position-fixed[style],
+    body.sidebar-minimized .sidebar {
+        width: var(--sidebar-min-width) !important;
+    }
+
+    .sidebar .nav {
+        flex-direction: column;
+        overflow-x: visible;
+    }
+
+    .sidebar .nav-link {
+        white-space: nowrap;
+    }
+}
+
+/* Card lateral com imagem */
+.card-left {
+    background: url('../images/mc.png') center/cover no-repeat;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding-top: 3rem;
+    min-height: 100%;
+}
+
+/* Ícones nos inputs */
+.input-icon,
+.input-icon-lock {
+    position: absolute;
+    top: 50%;
+    left: 15px;
+    transform: translateY(-50%);
+    color: #000 !important;
+    pointer-events: none;
+    z-index: 10;
+}
+
+.input-icon-eye {
+    position: absolute;
+    top: 50%;
+    right: 15px;
+    transform: translateY(-50%);
+    color: #495057;
+    cursor: pointer;
+    z-index: 10;
+}
+
+/* Botão customizado */
+.btn-custom {
+    border-radius: 20px;
+    margin: 1rem;
+    background-color: var(--azulbotao);
+    border: none;
+    padding: 0.75rem;
+    font-weight: 500;
+    transition: background-color 0.3s, transform 0.3s;
+    display: flex;
+    justify-content: center;
+}
+
+.btn-custom:hover {
+    background-color: rgb(10, 58, 202);
+    transform: scale(1.05);
+}
+
+/* Botão específico para a página de configurações */
+.btn-config {
+    border-radius: 15px;
+    margin: 0.20rem; 
+    background-color: var(--azulbotao);
+    border: none;
+    padding: 1rem; 
+    font-weight: 500;
+    transition: background-color 0.3s, transform 0.2s;
+    display: inline-block;
+    color: #fff;
+}
+.btn-config:hover { background-color: var(--azulelemento); transform: translateY(-1px); }
+
+/* Formulário de configurações */
+.config-form .form-control { max-width: 420px; }
+
+/* Card de configurações */
+.config-card {
+    max-width: 760px;
+    margin: 0 auto;
+    padding-left: 1.5rem; 
+    padding-right: 1rem;
+}
+
+@media (max-width: 992px) {
+    .config-card { max-width: 92%; }
+}
+
+.avatar-block { margin-left: 0; }
+.config-form .form-control { margin-left: 0; }
+
+.config-card .form-label,
+.config-card .form-control,
+.config-card .avatar-block { display: block; }
+
+/* Modal de avatar */
+#avatarModal .modal-content {
+    background-color: var(--azulclaro) !important;
+    color: #fff;
+    border: none;
+}
+
+#avatarModal .btn-config { background-color: var(--azulbotao); }
+#avatarModal .btn-config:hover { background-color: rgb(10,58,202); }
+
+/* Formulário */
+.form-label {
+    color: #fff;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    font-size: 1rem;
+}
+
+.form-control {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 0.5rem;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    background-color: rgba(255,255,255,0.06);
+    color: #fff;
+}
+
+.form-check-label {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    font-size: 0.875rem;
+}
+
+/* Inputs dos modais de login e cadastro */
+#loginModal .form-control,
+#cadastroModal .form-control,
+.modal .form-control {
+    background-color: #fff !important;
+    color: #222 !important;
+    border: 1px solid #dcdcdc !important;
+}
+
+/* Labels dentro dos modais */
+#loginModal .form-label:not(.text-white),
+#cadastroModal .form-label:not(.text-white),
+.modal .form-label:not(.text-white) {
+    color: #222 !important;
+}
+
