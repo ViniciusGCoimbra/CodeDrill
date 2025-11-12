@@ -14,6 +14,8 @@
 <script src="../public/assets/js/modals.js"></script>
 <script src="../public/assets/js/visisenha.js"></script>
 <script src="../public/assets/js/sidebar.js"></script>
+<script src="assets/ace/ace.js"></script>
+<script src="assets/js/compilador.js"></script>
 
 <!-- Executa automaticamente a função de exibir toast com base na query string -->
 <script>

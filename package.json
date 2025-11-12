@@ -1,0 +1,23 @@
+{
+  "name": "codedrill",
+  "version": "1.0.0",
+  "description": "Aplicação web educativa em PHP (protótipo) com autenticação, área de perfil e ambiente de desenvolvimento integrado.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ViniciusGCoimbra/CodeDrill.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ViniciusGCoimbra/CodeDrill/issues"
+  },
+  "homepage": "https://github.com/ViniciusGCoimbra/CodeDrill#readme",
+  "dependencies": {
+    "ace-builds": "^1.43.4"
+  }
+}

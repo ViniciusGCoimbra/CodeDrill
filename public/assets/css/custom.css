@@ -44,35 +44,22 @@ body {
     font-family: 'Montserrat', sans-serif;
 }
 
-/* Ícones Bootstrap */
-.bi {
+/* Ícones Bootstrap - ajustes locais (não usar regra global para evitar desalinhamento) */
+/* Mantemos margin-top para ícones no sidebar apenas; toolbar/terminal recebem alinhamento próprio */
+.sidebar .bi {
     margin-top: 16px;
 }
-
-/* Corrige alinhamento do ícone dentro do botão de toggle do sidebar */
-#sidebarToggle {
-    display: inline-flex; /* garante flexbox */
-    align-items: center;
-    justify-content: center;
-}
-
-#sidebarToggle .bi {
-    margin-top: 0 !important; /* neutraliza margem global */
-    margin-bottom: 0 !important;
+.vscode-bar .bi,
+.vscode-actions .bi,
+.vscode-terminal .bi {
+    margin-top: 0 !important;
     vertical-align: middle;
-    display: inline-block;
-    font-size: 1.05rem; /* ajuste fino do tamanho do ícone */
 }
+.vscode-actions .btn { margin-left: .35rem; }
 
-/* Cartões personalizados */
-.card-custom {
-    background-color: var(--azulfundo) !important;
-    border-radius: 15px;
-    overflow: hidden;
-    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3);
-}
-
-/* Sidebar */
+/* ================================================================
+   2. Sidebar (Menu Lateral)
+   ================================================================ */
 .sidebar,
 .vh-100.position-fixed[style] {
     background-color: var(--azulelemento) !important;
@@ -86,7 +73,7 @@ body {
     object-fit: cover;
 }
 
-/* AJUSTE: Remove o padding padrão da lista `ul` que deslocava os ícones para a direita */
+/* Remove o padding padrão da lista `ul` */
 .sidebar .nav {
     padding-left: 0;
 }
@@ -99,9 +86,11 @@ body {
     align-items: center;
 }
 
-.sidebar .nav-link .bi { margin-top: 0; }
+.sidebar .nav-link .bi { 
+    margin-top: 0; 
+}
 
-/* Hover e item ativo: mesmo visual */
+/* Hover e item ativo */
 .sidebar .nav-link.active,
 .sidebar .nav-link[aria-current="page"],
 .sidebar-link:hover,
@@ -111,7 +100,9 @@ body {
     color: #fff !important;
 }
 
-/* Sidebar minimizada */
+/* ----------------------------------------------------------------
+   Sidebar Minimizado (Correções de Alinhamento e Dropdown de Perfil)
+   ---------------------------------------------------------------- */
 .sidebar.sidebar-minimized {
     width: var(--sidebar-min-width) !important;
 }
@@ -119,6 +110,7 @@ body {
 .sidebar.sidebar-minimized .brand-text,
 .sidebar.sidebar-minimized .link-text,
 .sidebar.sidebar-minimized .profile-name {
+    /* Oculta apenas o texto no modo minimizado */
     display: none;
 }
 
@@ -126,39 +118,27 @@ body {
     gap: 0.5rem;
 }
 
+/* Centraliza ícones e garante largura total (70px) para links normais */
 .sidebar.sidebar-minimized .nav-link,
 .sidebar.sidebar-minimized .sidebar-link {
     justify-content: center;
     position: relative;
     overflow: hidden !important;
-    width: var(--sidebar-min-width) !important;
+    width: 100% !important; 
     max-width: var(--sidebar-min-width) !important;
-    margin-inline: 0;
-    padding-left: 0 !important; 
+    margin-inline: 0 !important;
+    padding-left: 0 !important;
     padding-right: 0 !important;
-    white-space: nowrap;
-    text-overflow: ellipsis;
     box-sizing: border-box;
     display: flex;
     align-items: center;
+    height: 40px; 
 }
 
+/* Efeito de hover */
 .sidebar.sidebar-minimized .nav-link:hover,
 .sidebar.sidebar-minimized .sidebar-link:hover {
     background-color: transparent !important;
-    border-radius: 8px;
-    color: #fff !important;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: var(--sidebar-min-width) !important;
-    max-width: var(--sidebar-min-width) !important;
-    height: 40px;
-    margin-left: 0;
-    overflow: hidden !important;
-    box-sizing: border-box;
-    padding-left: 0 !important;
-    padding-right: 0 !important;
     box-shadow: inset 0 0 0 9999px rgba(40, 88, 208, 0.95);
 }
 
@@ -169,69 +149,40 @@ body {
     text-align: center;
 }
 
-/* Ajuste da dropdown-toggle para centralizar seta quando minimizado */
+/* Ajusta o link de perfil/dropdown no modo minimizado */
 .sidebar .dropdown-toggle {
     display: flex;
     align-items: center;
 }
 
 .sidebar.sidebar-minimized .dropdown-toggle {
-    justify-content: center;
-    width: var(--sidebar-min-width) !important;
+    justify-content: center; 
+    width: 100% !important;
+    max-width: var(--sidebar-min-width) !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    margin-inline: 0 !important;
 }
 
+/* CORREÇÃO: MANTÉM a seta do dropdown visível no perfil, mas compacta */
 .sidebar.sidebar-minimized .dropdown-toggle::after {
-    margin-left: 0;
-    position: relative;
-    left: 0;
+    display: inline-block;
+    opacity: 0.95;
+    margin-left: 0.35rem; /* Espaçamento para a seta */
     transform: scale(0.9);
 }
-
 
 .sidebar.sidebar-minimized .profile-img {
     margin: 0 auto;
 }
 
-/* Ajuste de margem lateral */
-.ms-250,
-main.ms-250 {
-    margin-left: calc(var(--sidebar-width) + 10px) !important;
-    transition: margin-left 240ms cubic-bezier(.2, .8, .2, 1);
-}
-
-body.sidebar-minimized .ms-250,
-body.sidebar-minimized main.ms-250,
-.sidebar.sidebar-minimized + .ms-250,
-.sidebar.sidebar-minimized ~ .ms-250,
-.sidebar.sidebar-minimized + main.ms-250,
-.sidebar.sidebar-minimized ~ main.ms-250 {
-    margin-left: calc(var(--sidebar-min-width) + 20px) !important;
-}
-
-.sidebar + .container,
-.sidebar ~ .container,
-.sidebar + main,
-.sidebar ~ main,
-.sidebar + .page-content,
-.sidebar ~ .page-content {
-    margin-left: calc(var(--sidebar-width) + 10px) !important;
-    transition: margin-left 240ms cubic-bezier(.2, .8, .2, 1);
-}
-
-body.sidebar-minimized .sidebar + .container,
-body.sidebar-minimized .sidebar ~ .container,
-body.sidebar-minimized .sidebar + main,
-body.sidebar-minimized .sidebar ~ main,
-body.sidebar-minimized .sidebar + .page-content,
-body.sidebar-minimized .sidebar ~ .page-content {
-    margin-left: calc(var(--sidebar-min-width) + 20px) !important;
-}
-
-/* Botão de toggle */
+/* ----------------------------------------------------------------
+   Botão de Toggle (Ajustes de alinhamento)
+   ---------------------------------------------------------------- */
 #sidebarToggle {
     border-radius: 10px;
     padding: 0.25rem 0.45rem;
-    display: inline-flex;
+    display: inline-flex; 
     align-items: center;
     justify-content: center;
     margin: 0.45rem;
@@ -244,33 +195,43 @@ body.sidebar-minimized .sidebar ~ .page-content {
     border: 1px solid rgba(255,255,255,0.12);
 }
 
-
-#sidebarToggle:hover {
-    transform: translateX(-2px);
+#sidebarToggle .bi {
+    margin-top: 0 !important; /* neutraliza margem global */
+    margin-bottom: 0 !important;
+    vertical-align: middle;
+    display: inline-block;
+    font-size: 1.05rem; 
 }
 
-#sidebarToggle:focus {
-    outline: none;
-    box-shadow: 0 0 0 3px rgba(40,88,208,0.18);
+/* ----------------------------------------------------------------
+   Margem de Conteúdo (Garante que o conteúdo principal acompanhe)
+   ---------------------------------------------------------------- */
+.ms-250,
+main.ms-250 {
+    margin-left: calc(var(--sidebar-width) + 10px) !important;
+    transition: margin-left 240ms cubic-bezier(.2, .8, .2, 1);
 }
 
-/* Dropdown do perfil */
+body.sidebar-minimized .ms-250,
+body.sidebar-minimized main.ms-250,
+.sidebar.sidebar-minimized + main.ms-250,
+.sidebar.sidebar-minimized ~ main.ms-250 {
+    margin-left: calc(var(--sidebar-min-width) + 20px) !important;
+}
+
+/* ----------------------------------------------------------------
+   Dropdown do Perfil (Estilos do menu em si)
+   ---------------------------------------------------------------- */
 .dropdown-toggle::after {
     margin-left: 0.5rem;
-}
-
-.sidebar.sidebar-minimized .dropdown-toggle::after {
-    display: inline-block;
-    opacity: 0.95;
-    margin-left: 0.35rem;
-    transform: scale(0.9);
 }
 
 .sidebar .dropdown-menu {
     background-color: var(--azulclaro) !important;
     border: none;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.28); 
+    border-radius: 8px; 
 }
-
 
 .sidebar .dropdown-menu .dropdown-item {
     color: #fff;
@@ -282,54 +243,14 @@ body.sidebar-minimized .sidebar ~ .page-content {
     color: #fff;
 }
 
-.sidebar .dropdown-menu { 
-    box-shadow: 0 6px 18px rgba(0,0,0,0.28)
-    ; border-radius: 8px; 
+/* Cartões personalizados */
+.card-custom {
+    background-color: var(--azulfundo) !important;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3);
 }
 
-/* Cartão de boas-vindas */
-.welcome-card {
-    background: linear-gradient(180deg, rgba(255, 255, 255, 0.03),rgba(255, 255, 255, 0.02));
-    border-radius: 12px;
-}
-
-.welcome-title {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 1.5rem;
-    color: #fff;
-    margin-bottom: 0.5rem;
-}
-
-/* Responsividade */
-@media (max-width: 768px) {
-    .ms-250 {
-        margin-left: calc(var(--sidebar-min-width) + 20px) !important;
-        padding-top: 1rem;
-    }
-
-    .vh-100.position-fixed[style],
-    .sidebar {
-        position: fixed;
-        width: var(--sidebar-width);
-        height: 100vh;
-        overflow: visible;
-        transition: width 200ms ease;
-    }
-
-    body.sidebar-minimized .vh-100.position-fixed[style],
-    body.sidebar-minimized .sidebar {
-        width: var(--sidebar-min-width) !important;
-    }
-
-    .sidebar .nav {
-        flex-direction: column;
-        overflow-x: visible;
-    }
-
-    .sidebar .nav-link {
-        white-space: nowrap;
-    }
-}
 
 /* Card lateral com imagem */
 .card-left {
@@ -398,6 +319,193 @@ body.sidebar-minimized .sidebar ~ .page-content {
 
 /* Formulário de configurações */
 .config-form .form-control { max-width: 420px; }
+
+/* ================================================================
+   3. Compilador (Estilo Codepen/VS Code Unificado)
+   ================================================================ */
+
+/* Container principal que unifica barra, editor e terminal */
+.compilador-main-box {
+    background-color: #1e1e1e; /* Fundo escuro */
+    border: 1px solid #36435c; /* Borda suave para o bloco principal */
+    border-radius: 8px;
+    overflow: hidden; /* Garante que os filhos arredondem a borda */
+    height: 100%;
+}
+
+/* Barra de ações (Toolbar) - Fusão com o editor */
+.vscode-bar {
+    background: var(--azulelemento); /* Usar o azul escuro do sidebar para consistência */
+    color: #ffffff;
+    border-radius: 0;
+    padding: 0.5rem 0.6rem;
+    align-items: center;
+    margin-bottom: 0 !important;
+    border-bottom: 1px solid rgba(255,255,255,0.06); /* Linha de separação discreta */
+}
+
+/* Usar as fontes do projeto na barra do compilador e controles */
+.vscode-bar,
+.vscode-actions,
+.vscode-bar label,
+.vscode-actions label,
+.vscode-bar .form-select,
+.vscode-actions .form-select,
+.vscode-bar .form-control,
+.vscode-actions .form-control {
+    font-family: 'Montserrat', 'Roboto', sans-serif;
+    font-size: 0.95rem;
+}
+
+.vscode-center strong {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 1.05rem;
+    color: #fff;
+}
+
+/* Estilo para botões sem fundo na barra (ex: Arquivos, Editar) */
+.vscode-bar .btn-ghost {
+    background: transparent;
+    color: #ffffff;
+    border: none;
+    padding: 0.25rem 0.4rem;
+}
+
+.vscode-bar .btn-ghost:hover {
+    background: rgba(255,255,255,0.06);
+}
+
+/* Seletor e inputs dentro da toolbar do compilador */
+.vscode-actions .form-select,
+.vscode-bar .form-select,
+.vscode-actions .form-control {
+    background-color:  #001E86 !important;
+    color: #fff !important;
+    border: 1px solid #fff !important;
+    border-radius: 10px !important;
+    /* Remover seta nativa e usar ícone SVG branco para caret */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><path fill='%23ffffff' d='M4.646 6.646a.5.5 0 0 1 .708 0L8 9.293l2.646-2.647a.5.5 0 0 1 .708.708l-3 3a.5.5 0 0 1-.708 0l-3-3a.5.5 0 0 1 0-.708z'/></svg>");
+    background-repeat: no-repeat;
+    background-position: right .6rem center;
+    background-size: 1rem;
+    padding-right: 2.4rem !important;
+}
+
+/* Labels (legendas) do menu do compilador em branco */
+.vscode-actions label,
+.vscode-bar label { color: #fff !important; }
+
+/* Estilização específica do controle de fonte */
+.font-size-control {
+    display: flex;
+    align-items: center;
+    gap: .4rem;
+}
+.font-size-control label { margin-bottom: 0; }
+.font-size-control input[type="number"] {
+    text-align: center;
+    padding: 0.2rem 0.35rem;
+    width: 78px !important;
+    height: 34px;
+    background-color: rgba(255,255,255,0.04) !important;
+    color: #fff !important;
+    border: 1px solid rgba(255,255,255,0.12) !important;
+    margin-top: 0;
+}
+
+/* Ajustes de espaçamento e contraste dos botões da toolbar */
+.vscode-actions .btn-outline-success,
+.vscode-actions .btn-outline-secondary,
+.vscode-actions .btn-primary {
+    box-shadow: none;
+    border-radius: 4px;
+}
+
+/* Editor de Código (Ace Editor) */
+.editor-container {
+    height: 100%;
+    min-height: 420px;
+    background-color: #1e1e1e; /* Mesma cor do bloco principal */
+    border: none !important;
+    border-radius: 0 !important;
+}
+
+/* Alinhamento e proporcionalidade dos elementos da toolbar do compilador */
+.vscode-actions .d-flex.align-items-center { display: flex; align-items: center; gap: .5rem; }
+.vscode-left img { vertical-align: middle; margin-right: .5rem; }
+.vscode-actions label { margin-bottom: 0; display: inline-flex; align-items: center; height: 34px; }
+.vscode-actions .form-select.form-select-sm,
+.vscode-actions .form-control.form-control-sm { height: 34px; padding: .25rem .5rem; }
+.font-size-control input[type="number"] { height: 34px; margin-top: 0; align-self: center; }
+.vscode-actions .btn-group .btn { vertical-align: middle; }
+
+/* Ajuste fino para o tamanho do mascote/logo dentro da toolbar */
+.vscode-left .me-2 { margin-right: .6rem !important; }
+
+#editor {
+    border: none !important;
+    border-radius: 0 !important;
+}
+
+/* Terminal / Área de Saída */
+.vscode-terminal {
+    background: #1e1e1e !important; /* Mesma cor de fundo do bloco */
+    border: none !important;
+    box-shadow: none;
+    margin-top: 0 !important;
+}
+
+/* Quando a saída estiver ao lado direito, garantir que ocupe a altura do editor e fique visível */
+.vscode-layout .vscode-terminal .card-body,
+.vscode-terminal .card-body { display: flex; flex-direction: column; }
+.vscode-terminal .flex-fill { flex: 1 1 auto; }
+
+/* Responsividade: em telas pequenas o painel lateral fica abaixo do editor */
+@media (max-width: 991.98px) {
+    .col-lg-4 { max-width: 100%; flex: 0 0 100%; }
+    .col-lg-8 { max-width: 100%; flex: 0 0 100%; }
+    #saida { min-height: 220px !important; }
+}
+
+/* Tornar editor e saída com altura uniforme baseada na viewport */
+@media (min-width: 992px) {
+    .vscode-layout { align-items: stretch; }
+    .editor-container { min-height: calc(100vh - 180px); }
+    .editor-container #editor { height: 100% !important; }
+    .vscode-terminal .card-body .flex-fill { min-height: calc(100vh - 220px); }
+    /* Esconder botão toggle do terminal em telas largas (saída já visível) */
+    #vsc-terminal-toggle { display: none !important; }
+}
+
+/* Em telas pequenas permitimos toggle e altura menor */
+@media (max-width: 991.98px) {
+    #vsc-terminal-toggle { display: inline-block !important; }
+}
+
+/* Estilo da saída do terminal (texto puro) */
+#saida {
+    white-space: pre-wrap;
+    word-break: break-word;
+    font-family: Menlo, Monaco, monospace;
+    font-size: 0.95rem;
+    line-height: 1.3;
+    padding: 0.5rem 0.75rem;
+    background: transparent !important;
+    color: #fff !important;
+    border: none;
+}
+
+/* Pequeno estilo para botão desabilitado */
+.btn[disabled] {
+    opacity: 0.65 !important;
+    pointer-events: none;
+}
+
+/* ================================================================ */
 
 /* Card de configurações */
 .config-card {

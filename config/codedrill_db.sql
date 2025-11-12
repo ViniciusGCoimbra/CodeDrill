@@ -41,7 +41,7 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`id`, `nome`, `email`, `avatar`, `senha`, `data_cadastro`) VALUES
-(5, 'Vinicius', 'vinicius@gmail.com', '/Codedrill/public/assets/images/avatars/avatar5.svg', '$argon2id$v=19$m=65536,t=4,p=1$THhIbW91eTdIQ0M5bkRlaA$1k4hbRYx3g91C8GtwJc/9YP/1Mx5Kp4SsxmpgNjbYYA', '2025-09-27 15:35:51');
+(5, 'Vinicius', 'vinicius@gmail.com', '/Codedrill/public/assets/images/avatars/avatar5.jpg', '$argon2id$v=19$m=65536,t=4,p=1$THhIbW91eTdIQ0M5bkRlaA$1k4hbRYx3g91C8GtwJc/9YP/1Mx5Kp4SsxmpgNjbYYA', '2025-09-27 15:35:51');
 
 --
 -- Índices para tabelas despejadas

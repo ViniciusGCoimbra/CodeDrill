@@ -53,7 +53,7 @@
 										<div class="modal-body">
 											<div class="d-flex flex-wrap justify-content-start" id="avatarOptions">
 												<?php for ($i = 1; $i <= 10; $i++):
-													$path = "/Codedrill/public/assets/images/avatars/avatar{$i}.svg";
+													$path = "/Codedrill/public/assets/images/avatars/avatar{$i}.jpg";
 												?>
 													<div class="m-2 text-center avatar-choice-opt">
 														<img src="<?= $path ?>" width="64" height="64" class="rounded avatar-option-modal" data-path="<?= $path ?>" style="cursor:pointer; border:2px solid transparent;">

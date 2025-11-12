@@ -35,8 +35,7 @@ function showToast(message, type = 'info', delay = 4000) {
     console.error('showToast erro:', e);
   }
 }
-
-// utilitário opcional para abrir modal quando disponível (não utilizado diretamente aqui)
+// Abre modal quando a função estiver disponível
 function openModalWhenAvailable(fnName) {
   let attempts = 0;
   function tryOpen() {
