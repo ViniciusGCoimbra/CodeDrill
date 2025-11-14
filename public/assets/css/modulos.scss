@@ -1,0 +1,72 @@
+/* --- Reset básico --- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+/* --- Container do menu --- */
+.menu {
+  width: 100%;
+  background: #515151;
+  overflow: hidden;
+}
+
+/* --- Itens principais --- */
+.menu > li {
+  list-style: none;
+  border-bottom: 1px solid #444;
+}
+
+.menu > li:last-child {
+  border-bottom: none;
+}
+
+.menu > li > a {
+  display: block;
+  color: #fff;
+  text-decoration: none;
+  padding: 14px 16px;
+  background: #515151;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.menu > li > a:hover {
+  background: #444;
+}
+
+/* --- Submenu escondido por padrão --- */
+.submenu {
+  max-height: 0;
+  overflow: hidden;
+  background: #515151;
+  transition: max-height 0.3s ease;
+  list-style: none; /* Remove as bolinhas da lista */
+}
+
+.submenu li a {
+  display: block;
+  color: #ffffff;
+  padding: 12px 20px;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.submenu li a:hover {
+  background: #444;
+}
+
+/* --- Classe para submenu aberto --- */
+.submenu.aberto {
+  max-height: 500px; /* altura grande o suficiente para mostrar tudo */
+}
+
+/* Indicador visual de submenu */
+.menu > li > a::after {
+  float: right;
+  transition: transform 0.3s;
+}
+
+.menu > li.ativo > a::after {
+  transform: rotate(90deg);
+}

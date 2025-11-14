@@ -1,0 +1,17 @@
+.btn {
+  color: #ffffff;
+}
+#botoes {
+  position: sticky;
+  top: 0;
+  width: 70vw;
+
+  transition: background-color 0.3s;
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3);
+}
+.mod {
+  width: 30%;
+  height: 100%;
+  border: 1px solid black;
+  box-sizing: border-box;
+}

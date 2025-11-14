@@ -3,7 +3,7 @@
 <?php
 // Pega nome/avatar da sessão; tenta buscar no DB se necessário
 $usuario_nome = $_SESSION['usuario_nome'] ?? null;
-$usuario_avatar = $_SESSION['usuario_avatar'] ?? '/Codedrill/public/assets/images/mascote.png';
+$usuario_avatar = $_SESSION['usuario_avatar'] ?? '/Codedrill/public/assets/images/avatars/avatar1.jpg/';
 
 if (!empty($_SESSION['usuario_id']) && empty($_SESSION['usuario_avatar'])) {
   $usuario_id = (int) $_SESSION['usuario_id'];
@@ -32,7 +32,7 @@ if (!empty($_SESSION['usuario_id']) && empty($_SESSION['usuario_avatar'])) {
 
 <div class="d-flex flex-column flex-shrink-0 p-3 vh-100 position-fixed sidebar">
   <div class="d-flex align-items-center mb-3 mb-md-0 me-md-auto sidebar-top">
-    <a href="/Codedrill/public/inicio.php" class="d-flex align-items-center text-white text-decoration-none sidebar-brand">
+    <a href="/Codedrill/public/index.php" class="d-flex align-items-center text-white text-decoration-none sidebar-brand">
       <img src="/Codedrill/public/assets/images/mascote.png" alt="logo" width="40" height="40" class="me-2 rounded brand-logo"> 
       <span class="fs-4 brand-text">CodeDrill</span>
     </a>
@@ -66,12 +66,6 @@ if (!empty($_SESSION['usuario_id']) && empty($_SESSION['usuario_avatar'])) {
       <a href="/Codedrill/public/compilador.php" class="nav-link text-white sidebar-link">
         <i class="bi-code-slash"></i>
         <span class="ms-2 link-text">Ambiente</span>
-      </a>
-    </li>
-    <li>
-      <a href="/Codedrill/public/configuracoes.php" class="nav-link text-white sidebar-link">
-        <i class="bi bi-gear-fill"></i>
-        <span class="ms-2 link-text">Configurações</span>
       </a>
     </li>
   </ul>

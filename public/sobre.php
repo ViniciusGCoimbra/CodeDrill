@@ -30,7 +30,7 @@ require_once __DIR__ . '/../includes/menu.php';
     <div class="row align-items-center descricoes mb-5 flex-md-row-reverse">
         <!-- Imagem da logo -->
         <div class="col-md-6 text-center">
-            <div class="imglogo" style="background-image:url('../public/assets/images/mascote.png');"></div>
+            <div class="imglogo" style="background-image:url('../public/assets/images/mascotepb.png');"></div>
         </div>
 
         <!-- Texto explicativo sobre a logo -->
@@ -49,7 +49,7 @@ require_once __DIR__ . '/../includes/menu.php';
     <div class="row align-items-center descricoes mb-5">
         <!-- Imagem do nome -->
         <div class="col-md-6 text-center">
-            <div class="imgnome" style="background-image:url('img/nome.png');"></div>
+            <div class="imgnome" style="background-image:url('../public/assets/images/nome.png');"></div>
         </div>
 
         <!-- Texto explicativo sobre o nome -->
@@ -68,7 +68,7 @@ require_once __DIR__ . '/../includes/menu.php';
     <div class="row align-items-center descricoes mb-5 flex-md-row-reverse">
         <!-- Imagem do significado -->
         <div class="col-md-6 text-center">
-            <div class="imgsignificado" style="background-image:url('img/significado.png');"></div>
+            <div class="imgsignificado" style="background-image:url('../public/assets/images/significado.png');"></div>
         </div>
 
         <!-- Texto explicativo sobre o propósito do projeto -->

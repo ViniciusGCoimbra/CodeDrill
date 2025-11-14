@@ -1,52 +1,52 @@
 <!-- Modal de Cadastro -->
 <div class="modal fade" id="cadastroModal" tabindex="-1" aria-labelledby="cadastroModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg modal-dialog-centered">
-        <!-- Modal grande e centralizado verticalmente -->
-
         <div class="modal-content" style="background: transparent; border: none;">
-            <!-- Remove fundo e borda para aplicar estilo personalizado -->
-
             <div class="card-custom row g-0">
-                <!-- Layout em grid com espaçamento zero entre colunas -->
-
                 <div class="col-md-5 card-left">
                     <!-- Coluna esquerda (pode conter imagem ou estilo decorativo) -->
                 </div>
 
                 <div class="col-md-7 p-4">
                     <!-- Coluna direita com o formulário de cadastro -->
-
-                    <!-- Formulário que envia dados para o script de cadastro -->
                     <form action="../functions/cadastroaction.php" method="POST">
 
                         <!-- Campo Nome -->
-                        <div class="mb-3 position-relative">
+                        <div class="mb-3">
                             <label for="username" class="form-label text-white">Nome:</label>
-                            <i class="bi bi-person-fill input-icon"></i>
-                            <input type="name" name="nome" id="username" class="form-control rounded-pill ps-5" placeholder="Nome" required>
+                            <div class="position-relative">
+                                <i class="bi bi-person-fill input-icon"></i>
+                                <input type="text" name="nome" id="username" class="form-control rounded-pill ps-5" placeholder="Nome" required>
+                            </div>
                         </div>
 
                         <!-- Campo Email -->
-                        <div class="mb-3 position-relative">
+                        <div class="mb-3">
                             <label for="email" class="form-label text-white">Email:</label>
-                            <i class="bi bi-envelope-fill input-icon"></i>
-                            <input type="email" name="email" id="email" class="form-control rounded-pill ps-5" placeholder="Email" required>
+                            <div class="position-relative">
+                                <i class="bi bi-envelope-fill input-icon"></i>
+                                <input type="email" name="email" id="email" class="form-control rounded-pill ps-5" placeholder="Email" required>
+                            </div>
                         </div>
 
                         <!-- Campo Senha -->
-                        <div class="mb-3 position-relative">
-                            <label for="senha1" class="form-label text-white">Senha:</label>
-                            <i class="bi bi-lock-fill input-icon-lock"></i>
-                            <input type="password" name="senha" id="senhaCadastro" autocomplete="new-password" class="form-control rounded-pill ps-5" placeholder="Senha" required>
-                            <i class="bi bi-eye-slash-fill input-icon-eye" data-target="senhaCadastro"></i>
+                        <div class="mb-3">
+                            <label for="senhaCadastro" class="form-label text-white">Senha:</label>
+                            <div class="position-relative">
+                                <i class="bi bi-lock-fill input-icon-lock"></i>
+                                <input type="password" name="senha" id="senhaCadastro" autocomplete="new-password" class="form-control rounded-pill ps-5" placeholder="Senha" required>
+                                <i class="bi bi-eye-slash-fill input-icon-eye" data-target="senhaCadastro"></i>
+                            </div>
                         </div>
 
                         <!-- Campo Repetir Senha -->
-                        <div class="mb-3 position-relative">
-                            <label for="senha2" class="form-label text-white">Repita sua senha:</label>
-                            <i class="bi bi-lock-fill input-icon-lock"></i>
-                            <input type="password" name="senha2" id="senhaCadastro2" autocomplete="new-password" class="form-control rounded-pill ps-5" placeholder="Senha" required>
-                            <i class="bi bi-eye-slash-fill input-icon-eye" data-target="senhaCadastro2"></i>
+                        <div class="mb-3">
+                            <label for="senhaCadastro2" class="form-label text-white">Repita sua senha:</label>
+                            <div class="position-relative">
+                                <i class="bi bi-lock-fill input-icon-lock"></i>
+                                <input type="password" name="senha2" id="senhaCadastro2" autocomplete="new-password" class="form-control rounded-pill ps-5" placeholder="Senha" required>
+                                <i class="bi bi-eye-slash-fill input-icon-eye" data-target="senhaCadastro2"></i>
+                            </div>
                         </div>
 
                         <!-- Aceite dos Termos -->

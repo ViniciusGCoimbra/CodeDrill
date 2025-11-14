@@ -1,3 +1,14 @@
+<?php
+// ===== IMPORTANTE: Inicia a sessão ANTES de qualquer saída HTML =====
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+
+// Debug temporário - REMOVA depois de funcionar
+error_log("=== DEBUG HEADER ===");
+error_log("Session iniciada - ID: " . session_id());
+error_log("usuario_id na sessão: " . ($_SESSION['usuario_id'] ?? 'NÃO DEFINIDO'));
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -28,6 +39,8 @@
   <link rel="stylesheet" href="<?= css_href($cssBaseWeb, 'custom.css') ?>">
   <link rel="stylesheet" href="<?= css_href($cssBaseWeb, 'semi.css') ?>">
   <link rel="stylesheet" href="<?= css_href($cssBaseWeb, 'sobri.css') ?>">
+  <link rel="stylesheet" href="<?= css_href($cssBaseWeb, 'modulo.css') ?>">
+  <link rel="stylesheet" href="<?= css_href($cssBaseWeb, 'modulos.scss') ?>">
 
   <!-- Ícone da aba do navegador -->
   <link rel="icon" type="image/png" href="/Codedrill/public/assets/images/mascote.png">

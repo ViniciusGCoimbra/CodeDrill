@@ -83,7 +83,8 @@ if ($email === '' || $senha === '') {
 }
 
 // Consulta segura ao banco de dados usando prepared statement
-$sql = "SELECT id, nome, email, senha FROM usuarios WHERE email = ?";
+// IMPORTANTE: Adiciona o campo 'avatar' na consulta
+$sql = "SELECT id, nome, email, senha, avatar FROM usuarios WHERE email = ?";
 $stmt = mysqli_prepare($conn, $sql);
 mysqli_stmt_bind_param($stmt, "s", $email);
 mysqli_stmt_execute($stmt);
@@ -112,6 +113,8 @@ if ($loginOk) {
     $_SESSION['usuario_id'] = $usuario['id'];
     $_SESSION['usuario_nome'] = $usuario['nome'];
     $_SESSION['usuario_email'] = $usuario['email'];
+    // ADICIONADO: Salva o avatar na sessão (ou usa o padrão se não houver)
+    $_SESSION['usuario_avatar'] = $usuario['avatar'] ?? '/Codedrill/public/assets/images/mascote.png';
 
     // Redireciona para o dashboard
     header("Location: ../public/inicio.php");

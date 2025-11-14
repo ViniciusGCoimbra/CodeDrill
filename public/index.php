@@ -1,6 +1,16 @@
 <?php 
 // Inclui o cabeçalho da página (HTML <head>, estilos, etc.)
+// O header.php já inicia a sessão automaticamente
 require_once __DIR__ . '/../includes/header.php'; 
+
+// Debug temporário - REMOVA depois de funcionar
+error_log("=== DEBUG INDEX ===");
+error_log("Session ID: " . session_id());
+error_log("usuario_id: " . ($_SESSION['usuario_id'] ?? 'NÃO DEFINIDO'));
+
+// Verifica se o usuário está logado
+$usuario_logado = isset($_SESSION['usuario_id']) && !empty($_SESSION['usuario_id']);
+$usuario_nome = $_SESSION['usuario_nome'] ?? '';
 ?>
 
 <?php 
@@ -24,11 +34,18 @@ require_once __DIR__ . '/../includes/menu.php';
                         benefício de todos
                     </p>
                     
-                    <!-- Botão que abre o modal de cadastro -->
-                    <button type="button" class="btn-main btn-primary btn-lg text-white"
-                            data-bs-toggle="modal" data-bs-target="#cadastroModal">
-                        Começar
-                    </button>
+                    <?php if ($usuario_logado): ?>
+                        
+                        <a href="/Codedrill/public/inicio.php" class="btn-main btn-primary btn-lg text-white">
+                            Começar
+                        </a>
+                    <?php else: ?>
+                        <!-- Botão que abre o modal de cadastro para usuário deslogado -->
+                        <button type="button" class="btn-main btn-primary btn-lg text-white"
+                                data-bs-toggle="modal" data-bs-target="#cadastroModal">
+                            Começar
+                        </button>
+                    <?php endif; ?>
                 </div>
             </div>
         </div>
@@ -45,16 +62,6 @@ require_once __DIR__ . '/../includes/menu.php';
 <div class="img-fluid">
     <img src="../public/assets/images/mc.png" alt="Ilustração" class="img-fluid">
 </div>
-
-<?php 
-// Inclui o modal de login
-require_once __DIR__ . '/login.php'; 
-
-// Inclui o modal de cadastro
-require_once __DIR__ . '/cadastro.php'; 
-?>
-
-<!-- Comentário explicando que os modais e toasts são ativados após os scripts do footer -->
 
 <?php 
 // Inclui o rodapé da página (scripts, fechamento de tags, etc.)

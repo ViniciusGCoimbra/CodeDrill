@@ -1,23 +1,21 @@
 <?php
-// Sessão e logout seguro
-session_start();
-
-// Limpa variáveis de sessão
-$_SESSION = array();
-
-// Remove cookie de sessão se existir
-if (ini_get('session.use_cookies')) {
-    $params = session_get_cookie_params();
-    setcookie(session_name(), '', time() - 42000,
-        $params['path'], $params['domain'], $params['secure'], $params['httponly']
-    );
+// Inicia a sessão se ainda não estiver iniciada
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
 }
 
-// Destroi a sessão
+// Destrói todas as variáveis de sessão
+$_SESSION = array();
+
+// Remove o cookie de sessão
+if (isset($_COOKIE[session_name()])) {
+    setcookie(session_name(), '', time() - 3600, '/');
+}
+
+// Destroi a sessão completamente
 session_destroy();
 
-// Redireciona para a página inicial com mensagem de sucesso
-$msg = rawurlencode('Desconectado com sucesso');
-// redirect using absolute path relative to project root
-header("Location: /Codedrill/public/index.php?sucesso={$msg}");
-exit;
+// Redireciona para a página inicial
+header('Location: /Codedrill/public/index.php');
+exit();
+?>
