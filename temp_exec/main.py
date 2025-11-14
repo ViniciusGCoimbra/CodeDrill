@@ -1,6 +1,2 @@
-#include <stdio.h>
-
-int main() {
-    printf("Hello, World!\n");
-    return 0;
-}
+print("Ola, mundo!") # Exibe um texto simples
+print(5 + 3)        # Exibe o resultado de uma operação matemática

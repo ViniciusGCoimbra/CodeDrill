@@ -1,222 +1,97 @@
 <?php
-  //cabeçalho e menu
-  include_once __DIR__ . '/../includes/header.php';
-?>
-  
-  <style>
-    .btn{
-        background-color:#001e86; 
-    }
-    .btn1{
-        border-radius: 0;
-    }
-    .btn2{
-        border-radius: 0 0 12px 12px;
-    }
-    ul{
-        color: #ffffff;
-        text-decoration: none;
-    }
-    #botoes {
-        z-index: 1;
-        display: flex;   
-    }
-    #botoes:hover {
-  background-color: rgb(10, 58, 202);
-}
-/* Estilos do contêiner de rolagem do grid */
-.grid-container {
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  /* Essencial para a rolagem interna */
-  height: 100%; /* Defina uma altura fixa */
-  width: 20%;
-  margin-top: 5%;
-  text-align: center;
-  /* Opcional: para que a rolagem funcione em dispositivos touch */
-  -webkit-overflow-scrolling: touch;
-  overflow-y: auto; /* Adiciona a barra de rolagem quando necessário */
-  
-}
-</style>
+// Cabeçalho e menu
+include_once __DIR__ . '/../includes/header.php';
+include_once __DIR__ . '/../includes/menumodulos.php';
 
-<div class="d-grid" id="botoes" >
-  <button class="btn btn1 text-white" type="button">INÍCIO</button>
-  <button class="btn btn2 text-white" type="button">PRATICAR</button>
+// Define o módulo atual (pode vir da URL)
+$modulo_atual = $_GET['modulo'] ?? null;
+$tipo_aula = $_GET['tipo'] ?? null; // 'texto' ou 'video'
+?>
+
+<!-- Botão Toggle para Mobile -->
+<button class="toggle-sidebar" onclick="toggleSidebar()">
+    <i class="bi bi-list" style="font-size: 1.5rem;"></i>
+</button>
+
+<!-- Layout Principal -->
+<div class="modulos-layout">
+    <!-- Sidebar de Módulos -->
+    <aside class="sidebar-modulos" id="sidebarModulos">
+        <!-- Botões de Navegação -->
+        <div class="nav-buttons">
+            <a href="/Codedrill/public/inicio.php" class="btn">
+                <i class="bi bi-house-fill"></i>INÍCIO
+            </a>
+            <a href="/Codedrill/public/pratica.php" class="btn">
+                <i class="bi bi-code-slash"></i>PRATICAR
+            </a>
+        </div>
+
+        <!-- Lista de Módulos -->
+        <ul class="modulos-list">
+            <?php for ($i = 1; $i <= 20; $i++): ?>
+            <li class="modulo-item">
+                <div class="modulo-header" onclick="toggleModulo(<?= $i ?>)">
+                    <div>
+                        <span class="modulo-numero"><?= str_pad($i, 2, '0', STR_PAD_LEFT) ?></span>
+                        <span>Introdução ao PHP</span>
+                    </div>
+                    <i class="bi bi-chevron-down modulo-icone"></i>
+                </div>
+                <ul class="submenu" id="submenu-<?= $i ?>">
+                    <li>
+                        <a href="modulo1_texto.php?modulo=<?= $i ?>&tipo=texto">
+                            <i class="bi bi-file-text-fill"></i>
+                            Aula <?= $i ?>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="modulo1_video.php?modulo=<?= $i ?>&tipo=video">
+                            <i class="bi bi-play-circle-fill"></i>
+                            Videoaula <?= $i ?>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <?php endfor; ?>
+        </ul>
+    </aside>
 </div>
 
-  <div class="grid-container">
- <ul class="menu">
-    <li>
-      <a>MÓDULO - 1 - NOME MÓDULO</a>
-      <ul class="submenu">
-        <li><a href="modulo1_texto.php">AULA- 1</a></li>
-        <li><a href="modulo1_video.php">VIDEOAULA - 1</a></li>
-      </ul>
-    </li>
-    <li>
-      <a>MÓDULO - 2 - NOME MÓDULO</a>
-      <ul class="submenu">
-        <li><a href="modulo1_texto.php">AULA- 2</a></li>
-        <li><a href="modulo1_video.php">VIDEOAULA - 2</a></li>
-      </ul>
-    </li>
-    <li>
-      <a>MÓDULO - 3 - NOME MÓDULO</a>
-      <ul class="submenu">
-        <li><a href="modulo1_texto.php">AULA- 3</a></li>
-        <li><a href="modulo1_video.php">VIDEOAULA - 3</a></li>
-    </ul>
-    </li>
-    <li>
-      <a>MÓDULO - 4 - NOME MÓDULO</a>
-      <ul class="submenu">
-        <li><a href="modulo1_texto.php">AULA- 4</a></li>
-        <li><a href="modulo1_video.php">VIDEOAULA - 4</a></li>
-      </ul>
-  </li>
-  <li>
-      <a>MÓDULO - 5 - NOME MÓDULO</a>
-      <ul class="submenu">
-        <li><a href="modulo1_texto.php">AULA- 5</a></li>
-        <li><a href="modulo1_video.php">VIDEOAULA - 5</a></li>
-      </ul>
-  </li>
-  <li>
-    <a>MÓDULO - 6 - NOME MÓDULO</a>
-    <ul class="submenu">
-      <li><a href="modulo1_texto.php">AULA- 6</a></li>
-      <li><a href="modulo1_video.php">VIDEOAULA - 6</a></li>
-    </ul>
-  </li>
-  <li>
-    <a>MÓDULO - 7 - NOME MÓDULO</a>
-    <ul class="submenu">
-      <li><a href="modulo1_texto.php">AULA- 7</a></li>
-      <li><a href="modulo1_video.php">VIDEOAULA - 7</a></li>
-    </ul>
-  </li>
-  <li>
-    <a>MÓDULO - 8 - NOME MÓDULO</a>
-    <ul class="submenu">
-      <li><a href="modulo1_texto.php">AULA- 8</a></li>
-      <li><a href="modulo1_video.php">VIDEOAULA - 8</a></li>
-    </ul>
-  </li>
-  <li>
-    <a>MÓDULO - 9 - NOME MÓDULO</a>
-    <ul class="submenu">
-      <li><a href="modulo1_texto.php">AULA- 9</a></li>
-      <li><a href="modulo1_video.php">VIDEOAULA - 9</a></li>
-    </ul>
-  </li>
-  <li>
-    <a>MÓDULO - 10 - NOME MÓDULO</a>
-    <ul class="submenu">
-      <li><a href="modulo1_texto.php">AULA- 10</a></li>
-      <li><a href="modulo1_video.php">VIDEOAULA - 10</a></li>
-    </ul>
-  </li>
-  <li>
-    <a>MÓDULO - 11 - NOME MÓDULO</a>
-    <ul class="submenu">
-      <li><a href="modulo1_texto.php">AULA- 11</a></li>
-      <li><a href="modulo1_video.php">VIDEOAULA - 11</a></li>
-    </ul>
-  </li>
-  <li>
-    <a>MÓDULO - 12 - NOME MÓDULO</a>
-    <ul class="submenu">
-      <li><a href="modulo1_texto.php">AULA- 12</a></li>
-      <li><a href="modulo1_video.php">VIDEOAULA - 12</a></li>
-    </ul>
-  </li>
-  <li>
-    <a>MÓDULO - 13 - NOME MÓDULO</a>
-    <ul class="submenu">
-      <li><a href="modulo1_texto.php">AULA- 13</a></li>
-      <li><a href="modulo1_video.php">VIDEOAULA - 13</a></li>
-    </ul>
-  </li>
-  <li>
-    <a>MÓDULO - 14 - NOME MÓDULO</a>
-    <ul class="submenu">
-      <li><a href="modulo1_texto.php">AULA- 14</a></li>
-      <li><a href="modulo1_video.php">VIDEOAULA - 14</a></li>
-    </ul>
-  </li>
-  <li>
-    <a>MÓDULO - 15 - NOME MÓDULO</a>
-    <ul class="submenu">
-      <li><a href="modulo1_texto.php">AULA- 15</a></li>
-      <li><a href="modulo1_video.php">VIDEOAULA - 15</a></li>
-    </ul>
-  </li>
-  <li>
-    <a>MÓDULO - 16 - NOME MÓDULO</a>
-    <ul class="submenu">
-      <li><a href="modulo1_texto.php">AULA- 16</a></li>
-      <li><a href="modulo1_video.php">VIDEOAULA - 16</a></li>
-    </ul>
-  </li>
-  <li>
-    <a>MÓDULO - 17 - NOME MÓDULO</a>
-    <ul class="submenu">
-      <li><a href="modulo1_texto.php">AULA- 17</a></li>
-      <li><a href="modulo1_video.php">VIDEOAULA - 17</a></li>
-    </ul>
-  </li>
-  <li>
-    <a>MÓDULO - 18 - NOME MÓDULO</a>
-    <ul class="submenu">
-      <li><a href="modulo1_texto.php">AULA- 18</a></li>
-      <li><a href="modulo1_video.php">VIDEOAULA - 18</a></li>
-    </ul>
-  </li>
-  <li>
-    <a>MÓDULO - 19 - NOME MÓDULO</a>
-    <ul class="submenu">
-      <li><a href="modulo1_texto.php">AULA- 19</a></li>
-      <li><a href="modulo1_video.php">VIDEOAULA - 19</a></li>
-    </ul>
-  </li>
-  <li>
-    <a>MÓDULO - 20 - NOME MÓDULO</a>
-    <ul class="submenu">
-      <li><a href="modulo1_texto.php">AULA- 20</a></li>
-      <li><a href="modulo1_video.php">VIDEOAULA - 20</a></li>
-    </ul>
-  </li>
-</ul>
-    <!-- Adicione mais itens para que o conteúdo ultrapasse a altura máxima -->
-  </div>
-  <script>
-     // Seleciona todos os links principais do menu
-  const secoes = document.querySelectorAll('.menu > li > a');
-
-  secoes.forEach(secao => {
-    secao.addEventListener('click', () => {
-      const li = secao.parentElement;
-      const submenu = li.querySelector('.submenu');
-
-     /* // Fecha todos os outros submenus
-      document.querySelectorAll('.menu > li').forEach(item => {
-        if (item !== li) {
-          item.classList.remove('ativo');
-          const sub = item.querySelector('.submenu');
-          if (sub) sub.classList.remove('aberto');
+<script>
+// Toggle de módulos
+function toggleModulo(numero) {
+    const submenu = document.getElementById(`submenu-${numero}`);
+    const header = submenu.previousElementSibling;
+    
+    // Fecha outros submenus (opcional - comente se quiser múltiplos abertos)
+    /*
+    document.querySelectorAll('.submenu').forEach(sub => {
+        if (sub !== submenu) {
+            sub.classList.remove('aberto');
+            sub.previousElementSibling.classList.remove('ativo');
         }
-      });*/
-
-      // Alterna o submenu clicado
-      li.classList.toggle('ativo');
-      submenu.classList.toggle('aberto');
     });
-  });
+    */
+    
+    submenu.classList.toggle('aberto');
+    header.classList.toggle('ativo');
+}
+
+// Toggle sidebar mobile
+function toggleSidebar() {
+    document.getElementById('sidebarModulos').classList.toggle('show');
+}
+
+// Fecha sidebar ao clicar fora (mobile)
+document.addEventListener('click', function(event) {
+    const sidebar = document.getElementById('sidebarModulos');
+    const toggleBtn = document.querySelector('.toggle-sidebar');
+    
+    if (window.innerWidth <= 991 && 
+        !sidebar.contains(event.target) && 
+        !toggleBtn.contains(event.target)) {
+        sidebar.classList.remove('show');
+    }
+});
 </script>
-<?php
-  //código para acesso dos módulos e salvar módulos concluídos
-?>
-<?php include_once __DIR__ . '/../includes/footer.php'?>
-  
-
-

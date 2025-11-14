@@ -30,7 +30,7 @@ require_once __DIR__ . '/../includes/menu.php';
     <div class="row align-items-center descricoes mb-5 flex-md-row-reverse">
         <!-- Imagem da logo -->
         <div class="col-md-6 text-center">
-            <div class="imglogo" style="background-image:url('../public/assets/images/mascotepb.png');"></div>
+            <div class="imglogo" style="background-image:url('../public/assets/images/mascotepb (1).png');"></div>
         </div>
 
         <!-- Texto explicativo sobre a logo -->

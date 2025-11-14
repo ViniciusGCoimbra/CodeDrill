@@ -1,53 +1,90 @@
 <?php
-    include("modulos.php");
+include("modulos.php");
+
+// Pega o número do módulo da URL
+$modulo = $_GET['modulo'] ?? 1;
+
+// Caminho do vídeo (você pode personalizar para cada módulo)
+$caminho_do_video = "Teste.mp4";
 ?>
 
-<style>
-/* força a sidebar do modulos.php a comportar-se como barra lateral */
-.grid-container {
-  position: absolute;
-  left: 0;
-  top: 0;
-  bottom: 0;
-  width: 100%;
-  max-width: 300px;    /* opcional: limita largura em telas grandes */
-  box-sizing: border-box;
-  padding: 0.5rem;       /* opcional */
-}
+<div class="area-conteudo ">
+    <div class="conteudo-card">
+        <!-- Cabeçalho do Módulo -->
+        <div class="modulo-header-content">
+            <div class="modulo-badge">
+                <?= str_pad($modulo, 2, '0', STR_PAD_LEFT) ?>
+            </div>
+            <div class="modulo-info">
+                <h1>Introdução ao PHP</h1>
+                <p>
+                    <i class="bi bi-play-circle-fill"></i>Videoaula
+                    <span style="margin: 0 1rem; color: rgba(255,255,255,0.3);">|</span>
+                    <i class="bi bi-clock-fill"></i>25 minutos
+                </p>
+            </div>
+        </div>
 
-/* área que ocupa o restante (ao lado da sidebar) */
-.area-conteudo {
-  margin-left: 20%;    /* deixa o espaço para a sidebar fixa */
-  width: 80%;
-  min-height: 100%;   /* garante ocupar a altura */
-  display: flex;
-  justify-content: center; /* centraliza horizontalmente dentro dos 80% */
-  align-items: center;  /* troque para center se quiser também vertical */
-  padding: 2rem;
-  box-sizing: border-box;
-}
+        <!-- Player de Vídeo -->
+        <div class="video-container">
+            <video controls controlsList="nodownload">
+                <source src="<?= htmlspecialchars($caminho_do_video) ?>" type="video/mp4">
+                Seu navegador não suporta a reprodução de vídeos HTML5.
+            </video>
+        </div>
 
-/* o bloco real do seu conteúdo */
-.conteudo {
-  width: 100%;
-  max-width: 900px;    /* largura máxima do conteúdo */
-  margin-left: 20%;
-}
+        <!-- Descrição do Vídeo -->
+        <div class="video-descricao">
+            <h3> Sobre esta videoaula</h3>
+            <p>
+                Nesta videoaula, vamos explorar os fundamentos do PHP de forma prática e visual. 
+                Você verá exemplos reais de código, aprenderá as melhores práticas e 
+                entenderá como aplicar os conceitos no desenvolvimento de aplicações web. 
+                Acompanhe atentamente e não hesite em pausar o vídeo para experimentar o código!
+            </p>
+        </div>
 
-/* se outras regras estiverem sobrescrevendo, força com !important */
-.area-conteudo.force { margin-left: 20% !important; }
-</style>
+        <!-- Recursos da Aula -->
+        <div class="recursos-aula">
+            <div class="recurso-item duracao">
+                <i class="bi bi-clock-history"></i>
+                <h4>Duração</h4>
+                <p>25 minutos de conteúdo focado</p>
+            </div>
+            <div class="recurso-item nivel">
+                <i class="bi bi-bar-chart-fill"></i>
+                <h4>Nível</h4>
+                <p>Iniciante a Intermediário</p>
+            </div>
+            <div class="recurso-item pratica">
+                <i class="bi bi-code-slash"></i>
+                <h4>Prática</h4>
+                <p>Exemplos de código inclusos</p>
+            </div>
+        </div>
 
-<div class="area-conteudo">
-  <div class="conteudo">
-    <?php $caminho_do_video = "Teste.mp4"; ?>
-    <video controls width="600">
-        video controls width="600">
-        <!-- O PHP insere o caminho do vídeo aqui -->
-        <source src="<?php echo htmlspecialchars($caminho_do_video); ?>" type="video/mp4">
-                            
-        <!-- Texto de fallback para navegadores que não suportam a tag de vídeo -->
-         Seu navegador não suporta a tag de vídeo HTML5.
-    </video>
-  </div>
+        <!-- Navegação entre Aulas -->
+        <div class="navegacao-aulas">
+            <?php if ($modulo > 1): ?>
+                <a href="modulo1_video.php?modulo=<?= $modulo - 1 ?>" class="btn-navegacao btn-anterior">
+                    <i class="bi bi-arrow-left"></i>
+                    Vídeo Anterior
+                </a>
+            <?php endif; ?>
+            
+            <a href="modulo1_texto.php?modulo=<?= $modulo ?>" class="btn-navegacao btn-texto">
+                <i class="bi bi-file-text-fill"></i>
+                Ver Aula Teórica
+            </a>
+            
+            <?php if ($modulo < 20): ?>
+                <a href="modulo1_video.php?modulo=<?= $modulo + 1 ?>" class="btn-navegacao btn-proximo">
+                    Próximo Vídeo
+                    <i class="bi bi-arrow-right"></i>
+                </a>
+            <?php endif; ?>
+        </div>
+    </div>
 </div>
+
+<?php include_once __DIR__ . '/../includes/footer.php'; ?>

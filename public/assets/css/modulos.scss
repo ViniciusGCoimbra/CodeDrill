@@ -1,72 +1,510 @@
-/* --- Reset básico --- */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-/* --- Container do menu --- */
-.menu {
-  width: 100%;
-  background: #515151;
-  overflow: hidden;
+:root {
+    --azulclaro: #2858d0;
+    --azulfundo: #1e4abe;
+    --azulelemento: #001E86;
+    --azulbotao: #0A2D99;
 }
 
-/* --- Itens principais --- */
-.menu > li {
-  list-style: none;
-  border-bottom: 1px solid #444;
+/* === ÁREA DE CONTEÚDO === */
+.area-conteudo {
+    margin-left: 300px;
+    width: calc(100% - 300px);
+    padding: 0;           /* Tira o espaço interno */
+    margin-top: 0px;        /* Tira espaço externo */
+    background: linear-gradient(135deg, var(--azulfundo) 0%, rgba(30,74,190,0.95) 50%, var(--azulelemento) 100%);
+
+}
+/* === CARD DE CONTEÚDO === */
+.conteudo-card {
+    max-width: 1000px;
+    margin: 0 auto;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    padding: 3rem;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.menu > li:last-child {
-  border-bottom: none;
+/* === CABEÇALHO DO MÓDULO === */
+.modulo-header-content {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+    padding-bottom: 2rem;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.1);
 }
 
-.menu > li > a {
-  display: block;
-  color: #fff;
-  text-decoration: none;
-  padding: 14px 16px;
-  background: #515151;
-  cursor: pointer;
-  transition: 0.3s;
+.modulo-badge {
+    background: linear-gradient(135deg, var(--azulclaro) 0%, var(--azulbotao) 100%);
+    color: white;
+    padding: 1rem 1.5rem;
+    border-radius: 15px;
+    font-size: 1.5rem;
+    font-weight: 700;
+    min-width: 80px;
+    text-align: center;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.18);
 }
 
-.menu > li > a:hover {
-  background: #444;
+.modulo-info h1 {
+    color: white;
+    font-size: 2rem;
+    font-weight: 700;
+    margin: 0 0 0.5rem 0;
 }
 
-/* --- Submenu escondido por padrão --- */
-.submenu {
-  max-height: 0;
-  overflow: hidden;
-  background: #515151;
-  transition: max-height 0.3s ease;
-  list-style: none; /* Remove as bolinhas da lista */
+.modulo-info p {
+    color: rgba(255, 255, 255, 0.7);
+    margin: 0;
+    font-size: 1rem;
 }
 
-.submenu li a {
-  display: block;
-  color: #ffffff;
-  padding: 12px 20px;
-  text-decoration: none;
-  transition: 0.3s;
+.modulo-info i {
+    margin-right: 0.5rem;
+    color: var(--azulclaro);
 }
 
-.submenu li a:hover {
-  background: #444;
+/* === CONTEÚDO DA AULA === */
+.aula-conteudo {
+    color: white;
+    line-height: 1.8;
+    font-size: 1.1rem;
 }
 
-/* --- Classe para submenu aberto --- */
-.submenu.aberto {
-  max-height: 500px; /* altura grande o suficiente para mostrar tudo */
+.aula-conteudo h2 {
+    color: #fff;
+    font-size: 1.75rem;
+    margin: 2rem 0 1rem 0;
+    font-weight: 600;
 }
 
-/* Indicador visual de submenu */
-.menu > li > a::after {
-  float: right;
-  transition: transform 0.3s;
+.aula-conteudo h3 {
+    color: rgba(255,255,255,0.9);
+    font-size: 1.4rem;
+    margin: 1.5rem 0 1rem 0;
+    font-weight: 500;
 }
 
-.menu > li.ativo > a::after {
-  transform: rotate(90deg);
+.aula-conteudo p {
+    margin-bottom: 1.5rem;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.aula-conteudo code {
+    background: rgba(0, 0, 0, 0.3);
+    padding: 0.2rem 0.5rem;
+    border-radius: 4px;
+    color: #4fc3f7;
+    font-family: 'Courier New', monospace;
+}
+
+.aula-conteudo pre {
+    background: rgba(0, 0, 0, 0.35);
+    padding: 1.5rem;
+    border-radius: 10px;
+    overflow-x: auto;
+    border-left: 4px solid var(--azulclaro);
+    margin: 1.5rem 0;
+}
+
+.aula-conteudo pre code {
+    background: transparent;
+    padding: 0;
+    color: #a5d6ff;
+}
+
+.aula-conteudo ul, .aula-conteudo ol {
+    padding-left: 2rem;
+    margin: 1rem 0;
+}
+
+.aula-conteudo li {
+    margin-bottom: 0.75rem;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+/* === NAVEGAÇÃO ENTRE AULAS === */
+.navegacao-aulas {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+.btn-navegacao {
+    flex: 1;
+    padding: 1rem 2rem;
+    border: none;
+    border-radius: 12px;
+    font-weight: 600;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    transition: all 0.3s ease;
+    color: white;
+}
+
+.btn-anterior {
+    background: linear-gradient(135deg, var(--azulclaro) 0%, var(--azulbotao) 100%);
+}
+
+.btn-anterior:hover {
+    transform: translateX(-5px);
+    box-shadow: 0 8px 20px rgba(10,45,153,0.25);
+    color: white;
+}
+
+.btn-proximo {
+    background: linear-gradient(135deg, var(--azulbotao) 0%, var(--azulelemento) 100%);
+}
+
+.btn-proximo:hover {
+    transform: translateX(5px);
+    box-shadow: 0 8px 20px rgba(0,30,134,0.25);
+    color: white;
+}
+
+.btn-video {
+    background: linear-gradient(135deg, var(--azulclaro) 0%, var(--azulbotao) 100%);
+}
+
+.btn-video:hover {
+    transform: translateY(-2px);
+    color: white;
+}
+
+/* === RESPONSIVO === */
+@media (max-width: 991px) {
+    .area-conteudo {
+        margin-left: 0;
+        width: 100%;
+        padding: 2rem 1.5rem;
+    }
+    
+    .conteudo-card, .mensagem-inicial {
+        padding: 2rem 1.5rem;
+        margin-top: 2rem;
+    }
+    
+    .modulo-header-content {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .navegacao-aulas {
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 576px) {
+    .area-conteudo {
+        padding: 1.5rem 1rem;
+    }
+    
+    .conteudo-card, .mensagem-inicial {
+        padding: 1.5rem 1rem;
+    }
+    
+    .modulo-info h1 {
+        font-size: 1.5rem;
+    }
+    
+    .aula-conteudo {
+        font-size: 1rem;
+    }
+    
+    .mensagem-inicial h2 {
+        font-size: 1.5rem;
+    }
+    
+    .mensagem-inicial i {
+        font-size: 3rem;
+    }
+}
+
+/* === ÁREA DE CONTEÚDO === */
+.area-conteudo {
+    margin-left: 300px;
+    width: calc(100% - 300px);
+    padding: 2rem 3rem;
+    background: linear-gradient(135deg, var(--azulfundo) 0%, rgba(48,43,99,0.9) 50%, var(--azulelemento) 100%);
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+/* === MENSAGEM INICIAL === */
+.mensagem-inicial {
+    max-width: 600px;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    padding: 3rem;
+    margin-top: 5rem;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.mensagem-inicial i {
+    font-size: 4rem;
+    color: var(--azulclaro);
+    margin-bottom: 1.5rem;
+    display: block;
+}
+
+.mensagem-inicial h2 {
+    color: white;
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+.mensagem-inicial p {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 1.1rem;
+    line-height: 1.6;
+}
+
+/* === CARD DE CONTEÚDO === */
+.conteudo-card {
+    max-width: 1200px;
+    margin: 0 auto;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    padding: 3rem;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* === CABEÇALHO DO MÓDULO === */
+.modulo-header-content {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+    padding-bottom: 2rem;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+.modulo-badge {
+    background: linear-gradient(135deg, var(--azulclaro) 0%, var(--azulbotao) 100%);
+    color: white;
+    padding: 1rem 1.5rem;
+    border-radius: 15px;
+    font-size: 1.5rem;
+    font-weight: 700;
+    min-width: 80px;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.14);
+}
+
+.modulo-info h1 {
+    color: white;
+    font-size: 2rem;
+    font-weight: 700;
+    margin: 0 0 0.5rem 0;
+}
+
+.modulo-info p {
+    color: rgba(255, 255, 255, 0.7);
+    margin: 0;
+    font-size: 1rem;
+}
+
+.modulo-info i {
+    margin-right: 0.5rem;
+    color: var(--azulclaro);
+}
+
+/* === PLAYER DE VÍDEO === */
+.video-container {
+    position: relative;
+    width: 100%;
+    padding-bottom: 56.25%; /* Proporção 16:9 */
+    background: #000;
+    border-radius: 15px;
+    overflow: hidden;
+    margin-bottom: 2rem;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+}
+
+.video-container video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border-radius: 15px;
+}
+
+/* === DESCRIÇÃO DO VÍDEO === */
+.video-descricao {
+    background: rgba(255, 255, 255, 0.03);
+    padding: 1.5rem;
+    border-radius: 12px;
+    border-left: 4px solid var(--azulclaro);
+    margin-bottom: 2rem;
+}
+
+.video-descricao h3 {
+    color: var(--azulclaro);
+    font-size: 1.3rem;
+    margin: 0 0 1rem 0;
+    font-weight: 600;
+}
+
+.video-descricao p {
+    color: rgba(255, 255, 255, 0.8);
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* === RECURSOS DA AULA === */
+.recursos-aula {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.recurso-item {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 1.5rem;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+    text-align: center;
+}
+
+.recurso-item:hover {
+    background: rgba(255, 255, 255, 0.08);
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+.recurso-item i {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    display: block;
+}
+
+.recurso-item h4 {
+    color: white;
+    font-size: 1.1rem;
+    margin: 0 0 0.5rem 0;
+    font-weight: 600;
+}
+
+.recurso-item p {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.9rem;
+    margin: 0;
+}
+
+.recurso-item.duracao i { color: var(--azulclaro); }
+.recurso-item.nivel i { color: var(--azulbotao); }
+.recurso-item.pratica i { color: var(--azulelemento); }
+
+/* === NAVEGAÇÃO ENTRE AULAS === */
+.navegacao-aulas {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+.btn-navegacao {
+    flex: 1;
+    padding: 1rem 2rem;
+    border: none;
+    border-radius: 12px;
+    font-weight: 600;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    transition: all 0.3s ease;
+    color: white;
+}
+
+.btn-anterior {
+    background: linear-gradient(135deg, var(--azulclaro) 0%, var(--azulbotao) 100%);
+}
+
+.btn-anterior:hover {
+    transform: translateX(-5px);
+    box-shadow: 0 8px 20px rgba(10, 45, 153, 0.25);
+    color: white;
+}
+
+.btn-proximo {
+    background: linear-gradient(135deg, var(--azulbotao) 0%, var(--azulelemento) 100%);
+}
+
+.btn-proximo:hover {
+    transform: translateX(5px);
+    box-shadow: 0 8px 20px rgba(0, 30, 134, 0.25);
+    color: white;
+}
+
+.btn-texto {
+    background: linear-gradient(135deg, var(--azulclaro) 0%, var(--azulbotao) 100%);
+}
+
+.btn-texto:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(10, 45, 153, 0.25);
+    color: white;
+}
+
+/* === RESPONSIVO === */
+@media (max-width: 991px) {
+    .area-conteudo {
+        margin-left: 0;
+        width: 100%;
+        padding: 2rem 1.5rem;
+    }
+    
+    .conteudo-card {
+        padding: 2rem 1.5rem;
+    }
+    
+    .modulo-header-content {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .navegacao-aulas {
+        flex-direction: column;
+    }
+    
+    .recursos-aula {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 576px) {
+    .area-conteudo {
+        padding: 1.5rem 1rem;
+    }
+    
+    .conteudo-card {
+        padding: 1.5rem 1rem;
+    }
+    
+    .modulo-info h1 {
+        font-size: 1.5rem;
+    }
 }
